@@ -21,4 +21,19 @@ class MainActivity : AppCompatActivity() {
         initializeWidgets()
         aiService = createAiService()
     }
+
+    private fun createAiConfig(): AIConfiguration {
+        return AIConfiguration("8eb15fcaf41744fdb380ad69c7b6d406",
+                SupportedLanguages.English,
+                AIConfiguration.RecognitionEngine.System)
+    }
+
+    
+    private fun createAiService(): AIService {
+        val aiService = AIService.getService(this, createAiConfig())
+        aiService.setListener(DFinstance(txtView, progressBar))
+        return aiService
+    }
+
+
 }
