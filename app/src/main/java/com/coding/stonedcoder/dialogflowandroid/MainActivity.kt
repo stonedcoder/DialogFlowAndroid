@@ -2,6 +2,7 @@ package com.coding.stonedcoder.dialogflowandroid
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -28,11 +29,21 @@ class MainActivity : AppCompatActivity() {
                 AIConfiguration.RecognitionEngine.System)
     }
 
-    
+
     private fun createAiService(): AIService {
         val aiService = AIService.getService(this, createAiConfig())
         aiService.setListener(DFinstance(txtView, progressBar))
         return aiService
+    }
+
+    fun listenButtonOnClick(view: View) {
+        aiService.startListening()
+    }
+
+    private fun initializeWidgets() {
+        listenButton = findViewById<Button>(R.id.listen_button) as Button
+        txtView = findViewById<TextView>(R.id.text_view) as TextView
+        progressBar = findViewById<ProgressBar>(R.id.progressBar) as ProgressBar
     }
 
 
