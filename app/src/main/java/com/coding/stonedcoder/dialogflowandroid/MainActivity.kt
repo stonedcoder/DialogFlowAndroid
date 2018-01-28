@@ -1,5 +1,7 @@
 package com.coding.stonedcoder.dialogflowandroid
 
+import ai.api.android.AIConfiguration
+import ai.api.android.AIService
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
@@ -25,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun createAiConfig(): AIConfiguration {
         return AIConfiguration("8eb15fcaf41744fdb380ad69c7b6d406",
-                SupportedLanguages.English,
+                ai.api.AIConfiguration.SupportedLanguages.English,
                 AIConfiguration.RecognitionEngine.System)
     }
 
